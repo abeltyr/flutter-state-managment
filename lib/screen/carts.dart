@@ -43,8 +43,30 @@ class Carts extends StatelessWidget {
                             amount: cartData.totalAmount,
                             cartProducts: cartData.items.values.toList());
                         cartData.clear();
-                        Navigator.of(context)
-                            .pushReplacementNamed(OrderScreen.routeName);
+                        showDialog(
+                          context: context,
+                          builder: (ctx) => AlertDialog(
+                            title: Text('An error occurred!'),
+                            content:
+                                Text('An error occurred! and it goes here'),
+                            actions: <Widget>[
+                              FlatButton(
+                                onPressed: () {
+                                  Navigator.of(context).pushReplacementNamed(
+                                      OrderScreen.routeName);
+                                },
+                                child: Text("Okay"),
+                              ),
+                              FlatButton(
+                                onPressed: () {
+                                  Navigator.of(context).pushReplacementNamed(
+                                      OrderScreen.routeName);
+                                },
+                                child: Text("Okay"),
+                              )
+                            ],
+                          ),
+                        );
                       },
                       child: Text(
                         "ORDER NOW",
