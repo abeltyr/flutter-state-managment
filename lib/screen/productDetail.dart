@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
-// import "../provider/products.dart";
+import "../provider/products.dart";
 import "../widget/badge.dart";
 import "../provider/cart.dart";
 import "../screen/carts.dart";

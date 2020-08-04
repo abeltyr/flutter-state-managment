@@ -10,6 +10,38 @@ class ProductScreen extends StatefulWidget {
 }
 
 class _ProductScreenState extends State<ProductScreen> {
+  var _isInit = true;
+  var _isLoading = false;
+  @override
+  void initState() {
+    // Provider.of<Products>(context, listen: false).getItems().then(
+    //   (value) {
+    //     setState(() {
+    //       _isLoading = false;
+    //     });
+    //   },
+    // );
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    if (_isInit) {
+      setState(() {
+        _isLoading = true;
+      });
+      Provider.of<Products>(context).getItems().then(
+        (value) {
+          setState(() {
+            _isLoading = false;
+          });
+        },
+      );
+      _isInit = false;
+    }
+    super.didChangeDependencies();
+  }
+
   Future<void> _refreshProducts(BuildContext context) async {
     try {
       await Provider.of<Products>(context, listen: false).getItems();
@@ -25,26 +57,14 @@ class _ProductScreenState extends State<ProductScreen> {
         title: const Text('AppBar Demo'),
       ),
       drawer: AppDrawer(),
-      body: FutureBuilder(
-        future: Provider.of<Products>(context, listen: false).getItems(),
-        builder: (ctx, dataSnapShot) {
-          if (dataSnapShot.connectionState == ConnectionState.waiting) {
-            return Center(
+      body: _isLoading
+          ? Center(
               child: CircularProgressIndicator(),
-            );
-          }
-          if (dataSnapShot.error != null) {
-            return Center(
-              child: Text("someThing went wrong"),
-            );
-          } else {
-            return RefreshIndicator(
+            )
+          : RefreshIndicator(
               onRefresh: () => _refreshProducts(context),
               child: ProductGrid(),
-            );
-          }
-        },
-      ),
+            ),
     );
   }
 }
