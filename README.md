@@ -1,24 +1,9 @@
-# EC
+# SM
 
-A new Flutter project.
+A new Flutter project to learn state managment in flutter using provider package
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
-
-
-
-1. SafeArea: give padding from top;
+the following is a personal doc of flutter's widget i learned so far
+1. SafeArea: give padding from top and the bottom;
 2. Expanded: make the component take all the available space;  
    - flex: is used to determine which component get the bigger space when there are more than one Expanded;
 3. Wrap: used to wrap the childs in column and row
@@ -62,11 +47,5 @@ samples, guidance on mobile development, and a full API reference.
 23. customPaint need to [test](https://www.youtube.com/watch?v=kp14Y4uHpHs&list=PLjxrf2q8roU23XGwz3Km7sQZFTdB996iG&index=19)
 24. Tooltip: 
     1.  message
-
-
-
-
-
-
-1. Grid
+25. Grid
    1. GridTile
